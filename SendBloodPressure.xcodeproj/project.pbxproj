@@ -285,6 +285,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SendBloodPressure/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app needs access to save your blood pressure data to the Health app.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app needs access to save your blood pressure data to the Health app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -295,7 +297,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hualiteq.app.SendBloodPressure;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jannnn444.app.SendBloodPressure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -316,6 +318,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SendBloodPressure/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app needs access to save your blood pressure data to the Health app.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app needs access to save your blood pressure data to the Health app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -326,7 +330,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hualiteq.app.SendBloodPressure;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jannnn444.app.SendBloodPressure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

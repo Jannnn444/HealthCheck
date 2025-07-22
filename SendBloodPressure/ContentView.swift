@@ -17,10 +17,6 @@ struct ContentView: View {
     }
 }
 
-
-import SwiftUI
-import HealthKit
-
 struct BloodPressureView: View {
     @State private var systolic: String = ""
     @State private var diastolic: String = ""
