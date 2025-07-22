@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict/>
+        
+	</array>
+    <key>NSHealthShareUsageDescription</key>
+    <string>This app needs access to save your blood pressure data to the Health app.</string>
+
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>This app needs access to save your blood pressure data to the Health app.</string>
+</dict>
+</plist>
+
