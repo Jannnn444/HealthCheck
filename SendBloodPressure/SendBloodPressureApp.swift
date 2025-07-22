@@ -2,7 +2,7 @@
 //  SendBloodPressureApp.swift
 //  SendBloodPressure
 //
-//  Created by Hualiteq International on 2025/7/22.
+//  Created by Jan on 2025/7/22.
 //
 
 import SwiftUI
