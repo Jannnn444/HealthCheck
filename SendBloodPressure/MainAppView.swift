@@ -25,8 +25,10 @@ struct BloodPressureView: View {
     @State private var isLoading = false
     @State private var isAuthorized = false
     @State private var authorizationRequested = false
+    @State private var viewModel = ContentViewModel()
     
     private let healthStore = HKHealthStore()
+    let healthkitManager = HealthKitManager()
     
     var body: some View {
         VStack(spacing: 20) {
@@ -65,28 +67,71 @@ struct BloodPressureView: View {
                 TextField("Enter diastolic value", text: $diastolic)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.decimalPad)
-            }
-            .padding(.horizontal)
-            
-            Button(action: {
-                saveBloodPressure()
-            }) {
-                if isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .scaleEffect(0.8)
-                } else {
-                    Text("Save to Health App")
+                
+                
+                Button(action: {
+                    saveBloodPressure()
+                }) {
+                    if isLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .scaleEffect(0.8)
+                    } else {
+                        Text("Save to Health App")
+                    }
                 }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(isAuthorized ? Color.blue : Color.gray)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .padding(.horizontal)
+                .disabled(isLoading || systolic.isEmpty || diastolic.isEmpty || !isAuthorized)
+                
+                
+                // Blood pressure, call() for the data
+                Button(action: {
+                    Task {
+                        let result = try await healthkitManager.call(healthkitManager.tools[0])
+                        print(result)
+                        // 110/80
+                    }
+                }, label: {
+                    Text("Fetch Blood Pressure Button")
+                })
+                
+                // ScrollView for check chatroom
+                ScrollView {
+                       LazyVGrid(columns: [GridItem(.flexible())], spacing: 8) {
+                           ForEach(viewModel.messages) { message in
+                               let isUser = message.message.role == .user
+                               VStack {
+                                   Text(message.content)
+                                       .padding(8)
+                                       .background(isUser ? Color.blue.opacity(0.2) : nil)
+                                       .cornerRadius(8)
+                               }
+                               .frame(maxWidth: .infinity, alignment: isUser ? .trailing : .leading)
+                           }
+                       }
+                       .padding()
+                   }
+                   .safeAreaInset(edge: .bottom) {
+                       HStack {
+                           TextField("Type a message...", text: $viewModel.inputText, axis: .vertical)
+                               .textFieldStyle(.roundedBorder)
+                               .disabled(viewModel.isLoading)
+                           Button("Send") {
+                               viewModel.sendMessage()
+                           }
+                           .disabled(viewModel.inputText.isEmpty || viewModel.isLoading)
+                       }
+                       .padding()
+                       .background(.white)
+                   }
             }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(isAuthorized ? Color.blue : Color.gray)
-            .foregroundColor(.white)
-            .cornerRadius(10)
             .padding(.horizontal)
-            .disabled(isLoading || systolic.isEmpty || diastolic.isEmpty || !isAuthorized)
-            
+      
             Spacer()
         }
         .alert("HealthDemo", isPresented: $showingAlert) {

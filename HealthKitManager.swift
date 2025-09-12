@@ -8,11 +8,29 @@
 import SwiftUI
 import HealthKit
 
-
 // MARK: - HealthKit Manager (Alternative approach)
-
-// MARK: - HealthKit Manager (Alternative approach)
-class HealthKitManager: ObservableObject {
+class HealthKitManager: ObservableObject, MCPServerProtocol {
+    
+    var tools: [Tool] = [
+    Tool(name: "blood_pressure",
+         toolDescription: "Get the latest blood pressure from apple health",
+         input_schema: ["type": "object"])
+    ]
+    
+    private let systolicType = HKQuantityType(.bloodPressureSystolic)
+    private let diastolicType = HKQuantityType(.bloodPressureDiastolic)
+    private let bloodPressureType = HKCorrelationType(.bloodPressure)
+    
+    func call(_ tool: Tool) async throws -> String {
+        guard tool.name == "blood_pressure" else {
+            
+            throw NetworkError.toolNotSupported
+        }
+        let (systolic, diastolic) = try await fetchLastestBloodPressure()
+        return "\(Int(systolic))/\(Int(diastolic))"
+        
+    }
+    
     private let healthStore = HKHealthStore()
     
     @Published var isLoading = false
@@ -65,6 +83,22 @@ class HealthKitManager: ObservableObject {
                 }
             }
         }
+    }
+    
+    private func fetchLastestBloodPressure() async throws -> (systolic: Double, diastolic: Double) {
+        
+        let descriptor = HKSampleQueryDescriptor(predicates: [.sample(type: bloodPressureType)], sortDescriptors: [])
+       
+        let samples = try await descriptor.result(for: healthStore)
+        guard let sample = samples.first as? HKCorrelation else {
+            throw NetworkError.missingBloodPressureData
+        }
+        guard let systolic = sample.objects(for: systolicType).first as? HKQuantitySample, let diastolic = sample.objects(for: diastolicType).first as? HKQuantitySample else {
+            throw NetworkError.missingBloodPressureData
+        }
+        let systolicValue = systolic.quantity.doubleValue(for: .millimeterOfMercury())
+        let diastolicValue = diastolic.quantity.doubleValue(for: .millimeterOfMercury())
+          return (systolicValue, diastolicValue)
     }
     
     func saveBloodPressureIntoHealthStore(systolic: Double, diastolic: Double, completion: @escaping (Bool, String) -> Void) {

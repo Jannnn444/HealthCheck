@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E07AE852E7415540035CE48 /* AnthropicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E07AE842E7415540035CE48 /* AnthropicService.swift */; };
+		1E07AE872E74156A0035CE48 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E07AE862E74156A0035CE48 /* ContentViewModel.swift */; };
 		1EE1C7992E2F5F7900CE5AFB /* SendBloodPressureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE1C7982E2F5F7900CE5AFB /* SendBloodPressureApp.swift */; };
 		1EE1C79B2E2F5F7900CE5AFB /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE1C79A2E2F5F7900CE5AFB /* MainAppView.swift */; };
 		1EE1C79D2E2F5F7A00CE5AFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EE1C79C2E2F5F7A00CE5AFB /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E07AE842E7415540035CE48 /* AnthropicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicService.swift; sourceTree = "<group>"; };
+		1E07AE862E74156A0035CE48 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		1EE1C7952E2F5F7900CE5AFB /* SendBloodPressure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendBloodPressure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EE1C7982E2F5F7900CE5AFB /* SendBloodPressureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendBloodPressureApp.swift; sourceTree = "<group>"; };
 		1EE1C79A2E2F5F7900CE5AFB /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 				1EE1C79C2E2F5F7A00CE5AFB /* Assets.xcassets */,
 				1EE1C79E2E2F5F7A00CE5AFB /* Preview Content */,
 				1EE1C7B42E3A2F2100CE5AFB /* Model.swift */,
+				1E07AE842E7415540035CE48 /* AnthropicService.swift */,
+				1E07AE862E74156A0035CE48 /* ContentViewModel.swift */,
 			);
 			path = SendBloodPressure;
 			sourceTree = "<group>";
@@ -153,10 +159,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E07AE872E74156A0035CE48 /* ContentViewModel.swift in Sources */,
 				1EE1C79B2E2F5F7900CE5AFB /* MainAppView.swift in Sources */,
 				1EE1C7B32E3A2CE300CE5AFB /* ContentView.swift in Sources */,
 				1EE1C7992E2F5F7900CE5AFB /* SendBloodPressureApp.swift in Sources */,
 				1EE1C7B52E3A2F2100CE5AFB /* Model.swift in Sources */,
+				1E07AE852E7415540035CE48 /* AnthropicService.swift in Sources */,
 				1EE1C7B12E3A2C6B00CE5AFB /* PermissionManager.swift in Sources */,
 				1EE1C7A72E2F5FD000CE5AFB /* HealthKitManager.swift in Sources */,
 			);
