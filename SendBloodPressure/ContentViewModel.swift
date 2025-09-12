@@ -17,7 +17,7 @@ final class ContentViewModel {
     private let anthropicService: AnthropicService
  
     init() {
-        self.mcpServerService = HealthKitManager() 
+        self.mcpServerService = HealthKitManager()
         self.anthropicService = AnthropicService(
             apiKey: "YOUR_API_KEY",
             tools: mcpServerService.tools

@@ -158,3 +158,22 @@ struct ChatMessage: Identifiable {
             .joined(separator: "\n")
     }
 }
+
+struct AnthropicResponse: Codable {
+    let id: String
+    let type: String
+    let role: String
+    let content: [ContentItem]
+    let model: String
+    let stopReason: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id, type, role, content, model
+        case stopReason = "stop_reason"
+    }
+}
+
+struct ContentItem: Codable {
+    let type: String
+    let text: String
+}

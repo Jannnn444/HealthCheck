@@ -29,6 +29,8 @@ final class AnthropicService {
         
         let (data, _) = try await URLSession.shared.data(for: request)
         
+        // In your AnthropicService.send method, add this before decoding:
+        print("Raw API Response: \(String(data: data, encoding: .utf8) ?? "Unable to convert to string")")
         return try JSONDecoder().decode(Response.self, from: data)
     }
 }
